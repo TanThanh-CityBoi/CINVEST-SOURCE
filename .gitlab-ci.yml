@@ -1,0 +1,39 @@
+image: docker:20.10.16
+services:
+  - docker:20.10.16-dind
+variables:
+  DOCKER_TLS_CERTDIR: '/certs'
+stages:
+  - build
+  - deploy
+workflow:
+  rules:
+    # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == 'develop'
+    - if: $CI_COMMIT_BRANCH == 'develop'
+
+build:
+  stage: build
+  before_script:
+    # Install AWS CLI for pushing Docker images to ECR
+    - apk update
+    - apk add --no-cache python3
+    - python3 -m ensurepip
+    - ln -s /usr/bin/python3 /usr/bin/python
+    - pip3 install --upgrade pip
+    - pip install awscli
+  script:
+    # Build and tag the Docker image
+    - docker build -t file .
+    # Authenticate with AWS ECR
+    - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin $AWS_ECR_REPOSITORY_DEV
+    # Push the Docker image to AWS ECR
+    - docker tag file $AWS_ECR_REPOSITORY_DEV
+    - docker push $AWS_ECR_REPOSITORY_DEV
+deploy:
+  stage: deploy
+  before_script:
+    - apk add --no-cache openssh-client
+    - chmod 600 $AWS_EC2_SSH_KEY
+  script:
+    - ssh -tt -o StrictHostKeyChecking=no -i $AWS_EC2_SSH_KEY ubuntu@$EC2 "
+      sh file.sh"
