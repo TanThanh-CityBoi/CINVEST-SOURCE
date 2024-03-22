@@ -1,0 +1,58 @@
+syntax = "proto3";
+package news;
+
+service SubjectsServiceGrpc {
+  rpc Create (CreateSubjectRequest) returns (Subject);
+  rpc GetList (GetSubjectRequest) returns (ListSubjects);
+  rpc GetById (SubjectIdRequest) returns (Subject);
+  rpc Update (UpdateSubjectRequest) returns (Subject);
+  rpc Delete (SubjectIdRequest) returns (DeleteSubjectResponse);
+}
+
+message CreateSubjectRequest {
+  string name = 2;
+  int32 categoryId=3;
+  string state = 4;
+}
+
+message GetSubjectRequest {
+  int32 page=1;
+  int32 limit=2;
+  string sortBy=3;
+  string sortOrder=4;
+  string name = 5;
+  repeated int32 categoryIds=6;
+}
+
+message SubjectIdRequest {
+  int32 id=1;
+}
+
+message UpdateSubjectRequest {
+  int32 id=1;
+  string name = 2;
+  string state = 4;
+}
+
+message DeleteSubjectResponse {
+  bool success = 1;
+}
+
+message Subject {
+  int32 id=1;
+  string name = 2;
+  int32 categoryId=3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string createdBy = 6;
+  string updatedBy = 7;
+  string state = 8;
+}
+
+message ListSubjects {
+  repeated Subject data = 1;
+  int32 totalItems=2;
+  int32 perPage=3;
+  int32 totalPages=4;
+  int32 page=5;
+}

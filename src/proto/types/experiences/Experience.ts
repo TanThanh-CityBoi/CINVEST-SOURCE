@@ -1,0 +1,95 @@
+// Original file: src/proto/proto/experience.proto
+
+import type { File as _files_File, File__Output as _files_File__Output } from '../files/File';
+import type { Profile as _profiles_Profile, Profile__Output as _profiles_Profile__Output } from '../profiles/Profile';
+import type { City as _cities_City, City__Output as _cities_City__Output } from '../cities/City';
+import type { JobTitle as _jobTitles_JobTitle, JobTitle__Output as _jobTitles_JobTitle__Output } from '../jobTitles/JobTitle';
+import type { Company as _companies_Company, Company__Output as _companies_Company__Output } from '../companies/Company';
+
+export interface Experience {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'orgId'?: (number);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'cityId'?: (number);
+  'employmentType'?: (string);
+  'jobTitleId'?: (number);
+  'description'?: (string);
+  'profileId'?: (number);
+  'documents'?: (_files_File)[];
+  'profile'?: (_profiles_Profile | null);
+  'city'?: (_cities_City | null);
+  'jobTitle'?: (_jobTitles_JobTitle | null);
+  'organization'?: (_companies_Company | null);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  '_id'?: "id";
+  '_createdAt'?: "createdAt";
+  '_updatedAt'?: "updatedAt";
+  '_createdBy'?: "createdBy";
+  '_updatedBy'?: "updatedBy";
+  '_state'?: "state";
+  '_orgId'?: "orgId";
+  '_startDate'?: "startDate";
+  '_endDate'?: "endDate";
+  '_cityId'?: "cityId";
+  '_employmentType'?: "employmentType";
+  '_jobTitleId'?: "jobTitleId";
+  '_description'?: "description";
+  '_profileId'?: "profileId";
+  '_profile'?: "profile";
+  '_city'?: "city";
+  '_jobTitle'?: "jobTitle";
+  '_organization'?: "organization";
+  '_startYear'?: "startYear";
+  '_endYear'?: "endYear";
+}
+
+export interface Experience__Output {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'orgId'?: (number);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'cityId'?: (number);
+  'employmentType'?: (string);
+  'jobTitleId'?: (number);
+  'description'?: (string);
+  'profileId'?: (number);
+  'documents': (_files_File__Output)[];
+  'profile'?: (_profiles_Profile__Output | null);
+  'city'?: (_cities_City__Output | null);
+  'jobTitle'?: (_jobTitles_JobTitle__Output | null);
+  'organization'?: (_companies_Company__Output | null);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  '_id': "id";
+  '_createdAt': "createdAt";
+  '_updatedAt': "updatedAt";
+  '_createdBy': "createdBy";
+  '_updatedBy': "updatedBy";
+  '_state': "state";
+  '_orgId': "orgId";
+  '_startDate': "startDate";
+  '_endDate': "endDate";
+  '_cityId': "cityId";
+  '_employmentType': "employmentType";
+  '_jobTitleId': "jobTitleId";
+  '_description': "description";
+  '_profileId': "profileId";
+  '_profile': "profile";
+  '_city': "city";
+  '_jobTitle': "jobTitle";
+  '_organization': "organization";
+  '_startYear': "startYear";
+  '_endYear': "endYear";
+}

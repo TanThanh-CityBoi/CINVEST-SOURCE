@@ -1,0 +1,107 @@
+syntax = "proto3";
+package profiles;
+import "base.proto";
+import "company.proto";
+import "user.proto";
+import "album.proto";
+import "profileSkillMapping.proto";
+import "education.proto";
+import "experience.proto";
+import "city.proto";
+import "companyFounderMapping.proto";
+import "companyDirectorMapping.proto";
+import "companyChiefMapping.proto";
+import "exit.proto";
+import "companyPeopleMapping.proto";
+import "fundingInvestorMapping.proto";
+import "social.proto";
+import "recentNew.proto";
+import "profileInvestLocationMapping.proto";
+import "profileNicheIndustryMapping.proto";
+
+service ProfileService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryProfile) returns (GetListResponse) {}
+  rpc create(Profile) returns (GetOneResponse) {}
+  rpc update(Profile) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+  rpc count(QueryProfile) returns (CountResponse) {}
+}
+message Profile {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string firstName = 7;
+  optional string lastName = 8;
+  optional string gender = 9;
+  optional string type = 10;
+  optional string dob = 11;
+  optional int32 cityId = 12;
+  optional string description = 13;
+  optional string investDescription = 14;
+  optional int32 userId = 15;
+  optional User user = 16;
+  repeated Album albums = 17;
+  repeated ProfileSkillMapping skills = 18;
+  repeated Education educations = 19;
+  repeated Experience experiences = 20;
+  optional City city = 21;
+  repeated CompanyFounderMapping foundedCompanies = 22;
+  repeated CompanyDirectorMapping directorCompanies = 23;
+  repeated CompanyChiefMapping chiefCompanies = 24;
+  repeated Transfer transfers = 25;
+  repeated Exit exits = 26;
+  repeated CompanyPeopleMapping companies = 27;
+  repeated FundingInvestorMapping investedFundingRounds = 28;
+  repeated FundingInvestorMapping leadFundingRounds = 29;
+  repeated Social socials = 30;
+  optional string dobYear = 31;
+  optional string id_number = 32;
+  repeated RecentNew recentNews = 33;
+  optional double minRange = 34;
+  optional double maxRange = 35;
+  repeated ProfileInvestLocationMapping investLocations = 36;
+  repeated ProfileNicheIndustryMapping niches = 37;
+}
+message QueryProfile {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string firstName = 11;
+  optional string lastName = 12;
+  optional string gender = 13;
+  optional string type = 14;
+  optional string dob = 15;
+  optional int32 cityId = 16;
+  optional string description = 17;
+  optional string investDescription = 18;
+  optional int32 userId = 19;
+  optional string dobYear = 20;
+  optional string id_number = 21;
+  optional double minRange = 22;
+  optional double maxRange = 23;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Profile data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Profile data = 2;
+}

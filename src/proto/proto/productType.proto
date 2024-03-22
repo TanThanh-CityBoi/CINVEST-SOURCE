@@ -1,0 +1,53 @@
+syntax = "proto3";
+import "base.proto";
+package productTypes;
+
+service ProductTypeService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryProductType) returns (GetListResponse) {}
+  rpc create(ProductType) returns (GetOneResponse) {}
+  rpc update(ProductType) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+
+message ProductType {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 8;
+  optional string code = 9;
+  optional string major = 10;
+
+}
+
+message QueryProductType {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 8;
+  optional string code = 9;
+  optional string major = 10;
+
+}
+
+
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated ProductType data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional ProductType data = 2;
+}

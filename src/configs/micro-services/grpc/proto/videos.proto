@@ -1,0 +1,67 @@
+syntax = "proto3";
+package news;
+
+service VideosServiceGRPC {
+  rpc Create (Videos) returns (Videos);
+  rpc GetList (GetVideosRequest) returns (VideosList);
+  rpc GetById (VideoIdRequest) returns (Videos);
+  rpc Update (Videos) returns (Videos);
+  rpc UpdateAds (Videos) returns (Videos);
+  rpc Delete (VideoIdRequest) returns (DeleteVideosResponse);
+  rpc ApprovedOrReject(MultipleUpdateRequest) returns (BaseRes);
+  rpc DeleteMultiple(IdsRequest) returns (BaseRes);
+}
+
+message VideoIdRequest{
+  int32 id=1;
+}
+
+message GetVideosRequest {
+  int32 page=1;
+  int32 limit=2;
+  string sortBy=3;
+  string sortOrder=4;
+  int32 countryId=5;
+  int32 cityId=6;
+  string title=7;
+  string isPriorityAdvertising = 8;
+  string state=9;
+  int32 advertisingId=10;
+  int32 categoryId=11;
+}
+
+message DeleteVideosResponse {
+  bool success = 1;
+}
+
+message Videos {
+  int32 id=1;
+  string title = 2;
+  int32 categoryId = 3;
+  string youtubeId = 4;
+  string descriptions = 5;
+  string startDate = 7;
+  string endDate = 8;
+  int32 advertisingId=9;
+  int32 advertisingTime = 10;
+  string createdAt = 17;
+  string updatedAt = 18;
+  string createdBy = 19;
+  string updatedBy = 20;
+  string state = 21;
+  Category category=22;
+  Advertising advertisings=11;
+  repeated Hashtags hashtags = 6;
+  User creator=30;
+  string publishAt = 31;
+  string startDateAdvertising=32;
+  repeated Category categories=35;
+}
+
+message VideosList {
+  repeated Videos data = 1;
+  int32 totalItems=2;
+  int32 perPage=3;
+  int32 totalPages=4;
+  int32 page=5;
+}

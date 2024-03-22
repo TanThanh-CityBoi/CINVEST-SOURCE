@@ -1,0 +1,26 @@
+syntax = "proto3";
+package fundingRounds;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+import "fundingRound.proto";
+
+message FundingInvestorMapping {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 fundingRoundId = 7;
+  optional int32 orgId = 8;
+  optional int32 indId = 9;
+  optional int32 leadId = 10;
+  optional double amount = 11;
+  optional string startDate = 12;
+  optional string endDate = 13;
+  optional FundingRound fundingRound = 14;
+  optional Company organization = 15;
+  optional Profile individual = 16;
+  optional Profile leadInvestor = 17;
+}

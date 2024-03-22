@@ -1,0 +1,52 @@
+syntax = "proto3";
+package archiveRecords;
+import "base.proto";
+import "user.proto";
+import "profile.proto";
+import "company.proto";
+import "fundingRound.proto";
+
+service ArchiveRecordService {
+  rpc getList(QueryArchiveRecord) returns (GetListResponse) {}
+}
+
+message ArchiveRecord {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 userId = 7;
+  optional int32 profileId = 8;
+  optional int32 companyId = 9;
+  optional int32 fundingRoundId = 10;
+  optional User user = 11;
+  optional Profile profile = 12;
+  optional Company company = 13;
+  optional FundingRound fundingRound = 14;
+}
+
+message QueryArchiveRecord {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional int32 createdBy = 4;
+  optional int32 updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string email = 11;
+  optional string type = 12;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated ArchiveRecord data = 6;
+}

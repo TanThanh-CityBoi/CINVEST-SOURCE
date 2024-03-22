@@ -1,0 +1,5 @@
+export enum ADVERTISING_TYPE_ENUM {
+  POST = 'POST',
+  BANNER = 'BANNER',
+  VIDEO = 'VIDEO',
+}

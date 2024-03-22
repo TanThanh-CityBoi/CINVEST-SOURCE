@@ -1,0 +1,159 @@
+syntax = "proto3";
+package companies;
+import "google/protobuf/any.proto";
+import "base.proto";
+import "user.proto";
+import "ipoStock.proto";
+import "companyIndustryMapping.proto";
+import "city.proto";
+import "album.proto";
+import "transfer.proto";
+import "exit.proto";
+import "fundingRound.proto";
+import "companyFounderMapping.proto";
+import "companyDirectorMapping.proto";
+import "companyChiefMapping.proto";
+import "experience.proto";
+import "companyPeopleMapping.proto";
+import "fundingInvestorMapping.proto";
+import "service.proto";
+import "product.proto";
+import "merge.proto";
+import "acquisition.proto";
+import "cooperation.proto";
+import "social.proto";
+import "campaign.proto";
+import "recentNew.proto";
+import "companyInvestLocationMapping.proto";
+import "companyNicheIndustryMapping.proto";
+
+service CompanyService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryCompany) returns (GetListResponse) {}
+  rpc create(Company) returns (GetOneResponse) {}
+  rpc update(Company) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+  rpc count(QueryCompany) returns (CountResponse) {}
+}
+
+message Company {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 7;
+  optional string secondName = 8;
+  optional string hashtag = 9;
+  optional string type = 10;
+  optional double authorizedCapital = 11;
+  optional string registerDate = 12;
+  optional string deregisterDate = 13;
+  optional string description = 14;
+  optional string taxNumber = 15;
+  optional string contactNumber = 16;
+  optional string establishmentDecision = 17;
+  optional string responsibleAuthority = 18;
+  optional int32 employeeNumber = 19;
+  optional string streetAddress = 20;
+  optional int32 wardId = 21;
+  optional int32 districtId = 22;
+  optional int32 headquarterPlaceId = 23;
+  optional int32 managementPlaceId = 24;
+  optional int32 taxPlaceId = 25;
+  optional int32 userId = 26;
+  optional int32 ipoStockId = 27;
+  optional int32 parentId = 28;
+  optional int32 industryId = 29;
+  optional User user = 30;
+  optional IpoStock ipoStock = 31;
+  repeated CompanyIndustryMapping industries = 32;
+  optional City headquarterPlace = 33;
+  optional City managementPlace = 34;
+  optional City taxPlace = 35;
+  repeated Album albums = 36;
+  repeated Transfer transfers = 37;
+  repeated Exit exits = 38;
+  repeated FundingRound fundingRounds = 39;
+  repeated CompanyFounderMapping founders = 40;
+  repeated CompanyDirectorMapping directors = 41;
+  repeated CompanyChiefMapping chiefs = 42;
+  repeated Experience employees = 43;
+  repeated CompanyPeopleMapping people = 44;
+  repeated FundingInvestorMapping investedFundingRounds = 45;
+  repeated Service services = 46;
+  repeated Product products = 47;
+  repeated Merge merges = 48;
+  repeated Merge soldMergers = 49;
+  repeated Acquisition acquisitions = 50;
+  repeated Acquisition soldAcquisitions = 51;
+  repeated Cooperation cooperations = 52;
+  optional Company parent = 53;
+  repeated Social socials = 54;
+  repeated Campaign campaigns = 55;
+  optional double minRange = 56;
+  optional double maxRange = 57;
+  repeated HashTags hashtags = 58;
+  repeated RecentNew recentNews = 59;
+  repeated CompanyInvestLocationMapping investLocations = 60;
+  repeated CompanyNicheIndustryMapping niches = 61;
+}
+
+message QueryCompany {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string name = 11;
+  optional string secondName = 12;
+  optional string hashtag = 13;
+  optional string type = 14;
+  optional double authorizedCapital = 15;
+  optional string registerDate = 16;
+  optional string deregisterDate = 17;
+  optional string description = 18;
+  optional string taxNumber = 19;
+  optional string contactNumber = 20;
+  optional string establishmentDecision = 21;
+  optional string responsibleAuthority = 22;
+  optional int32 employeeNumber = 23;
+  optional string streetAddress = 24;
+  optional int32 wardId = 25;
+  optional int32 districtId = 26;
+  optional int32 headquarterPlaceId = 27;
+  optional int32 managementPlaceId = 288;
+  optional int32 taxPlaceId = 29;
+  optional int32 userId = 30;
+  optional int32 ipoStockId = 31;
+  optional int32 parentId = 32;
+  optional int32 industryId = 33;
+  repeated int32 ids = 34;
+  optional double minRange = 35;
+  optional double maxRange = 36;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Company data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Company data = 2;
+}
+
+message HashTags {
+  optional int32 id = 1;
+  optional string name = 2;
+}

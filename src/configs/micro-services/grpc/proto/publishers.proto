@@ -1,0 +1,111 @@
+syntax = "proto3";
+package news;
+
+service PublisherServiceGrpc {
+  rpc Create (CreatePublisherRequest) returns (Publisher);
+  rpc GetList (GetPublisherRequest) returns (GetPublishersResponse);
+  rpc GetById (GetPublisherByIdRequest) returns (Publisher);
+  rpc Update (UpdatePublisherRequest) returns (Publisher);
+  rpc Delete (DeletePublisherRequest) returns (DeletePublisherResponse);
+  rpc ApprovedOrReject(MultipleUpdateRequest) returns (BaseRes);
+  rpc DeleteMultiple(IdsRequest) returns (BaseRes);
+}
+
+message CreatePublisherRequest {
+  string name = 2;
+  string organization = 3;
+  string sourceType = 4;
+  string thumbnail = 5;
+  string content = 6;
+  int32 countryId=7;
+  int32 cityId=8;
+  string description = 14;  
+  int32 typeId = 15;
+  string countryName = 16;
+  string cityName = 17;
+  string state=32;
+  int32 areaId=19;
+  string areaName = 20;
+  string url = 22;
+  string postType=23;
+}
+
+message GetPublisherByIdRequest {
+  int32 id = 1;
+}
+
+message GetPublisherRequest {
+  int32 page=1;
+  int32 limit=2;
+  string sortBy=3;
+  string sortOrder=4;
+  string name=5;
+  int32 countryId=6;
+  int32 cityId=7;
+  int32 typeId = 14;  
+  string createdAt = 15;
+  string state=16;
+  string postType=23;
+}
+
+message UpdatePublisherRequest {
+  int32 id=1;
+  string name = 2;
+  string organization = 3;
+  string sourceType = 4;
+  string thumbnail = 5;
+  string content = 6;
+  int32 countryId=7;
+  int32 cityId=8;
+  string description = 14;  
+  int32 typeId = 15;
+  string countryName = 16;
+  string cityName = 17;
+  string state=32;
+  int32 areaId=19;
+  string areaName = 20;
+  string url = 22;
+  string postType=23;
+}
+
+message DeletePublisherRequest {
+  int32 id = 1;
+}
+
+message DeletePublisherResponse {
+  int32 id = 1;
+  bool success = 2;
+}
+
+message Publisher {
+  int32 id=1;
+  string name = 2;
+  string organization = 3;
+  string sourceType = 4;
+  string thumbnail = 5;
+  string content = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+  string createdBy = 9;
+  string updatedBy = 10;
+  string state = 11;
+  int32 countryId=12;
+  int32 cityId=13;
+  string description = 14;  
+  string countryName = 16;
+  string cityName = 17;
+  Types type=18;
+  int32 areaId=19;
+  string areaName = 20;
+  int32 typeId=21;
+  string url = 22;
+  string postType=23;
+}
+
+message GetPublishersResponse {
+  repeated Publisher data = 1;
+  int32 totalItems=2;
+  int32 perPage=3;
+  int32 totalPages=4;
+  int32 page=5;
+}

@@ -1,0 +1,4 @@
+export enum TYPE_ENUM {
+  PUBLISHER = 'PUBLISHER',
+  BANNER = 'BANNER',
+}

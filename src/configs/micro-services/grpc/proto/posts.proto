@@ -1,0 +1,135 @@
+syntax = "proto3";
+package news;
+
+service PostsServiceGRPC {
+  rpc Create (CreatePostsRequest) returns (Posts);
+  rpc GetList (GetPostsRequest) returns (PostsList);
+  rpc GetById (PostIdRequest) returns (Posts);
+  rpc Update (UpdatePostsRequest) returns (Posts);
+  rpc UpdateAds (Posts) returns (Posts);
+  rpc Delete (PostIdRequest) returns (DeletePostsResponse);
+  rpc ApprovedOrReject(MultipleUpdateRequest) returns (BaseRes);
+  rpc DeleteMultiple(IdsRequest) returns (BaseRes);
+}
+
+message PostIdRequest{
+  int32 id=1;
+}
+
+message Hashtags{
+  string name = 2;
+}
+
+message CreatePostsRequest {
+  string title = 2;
+  string description = 3;
+  string content = 4;
+  string thumbnail = 5;
+  string sourceUrl = 6;
+  string source = 7;
+  int32 categoryId = 8;
+  int32 subjectId = 9;
+  string author = 10;
+  int32 areaId = 11;
+  int32 countryId = 12;
+  int32 cityId = 13;
+  int32 advertisingTime = 15;
+  int32 publisherId = 16;
+  int32 view = 22;
+  string countryName = 23;
+  string cityName = 24;
+  int32 advertisingId=25;
+  string type=26;
+  repeated Hashtags hashtags = 27;
+  string createdBy = 28;
+  string state=32;
+  string startDateAdvertising=33;
+  string areaName=34;
+}
+
+message GetPostsRequest {
+  int32 page=1;
+  int32 limit=2;
+  string sortBy=3;
+  string sortOrder=4;
+  int32 countryId=5;
+  int32 cityId=6;
+  string description=7;
+  string content=8;
+  string source=9;
+  string advertising=10;
+  int32 advertisingId=25;
+  string type = 26;
+  string title = 27;
+  repeated int32 categoryIds = 28;
+  repeated int32 subjectIds = 29;
+  int32 categoryId = 30;
+  int32 subjectId = 31;
+  repeated int32 excludeIds = 32; 
+  string isPriorityAdvertising = 33;
+  string state = 34;
+  int32 areaId=35;
+  string minDate=36;
+  int32 publisherId=37;
+  repeated int32 ids = 38;
+}
+
+message UpdatePostsRequest {
+ int32 id =1;
+ CreatePostsRequest dataUpdate=2;
+}
+
+message DeletePostsResponse {
+  bool success = 1;
+}
+
+message Posts {
+  int32 id=1;
+  string title = 2;
+  string description = 3;
+  string content = 4;
+  string thumbnail = 5;
+  string sourceUrl = 6;
+  string source = 7;
+  int32 categoryId = 8;
+  int32 subjectId = 9;
+  string author = 10;
+  int32 areaId = 11;
+  int32 countryId = 12;
+  int32 cityId = 13;
+  int32 advertisingTime = 15;
+  string createdAt = 16;
+  string updatedAt = 17;
+  string createdBy = 18;
+  string updatedBy = 19;
+  string state = 20;
+  int32 view = 21;
+  string countryName = 22;
+  string cityName = 23;
+  Publisher publisher = 24;
+  Advertising advertisings=25;
+  string type = 26;
+  repeated Hashtags hashtags = 27;
+  Category category=28;
+  Subject subject=29;
+  User creator=30;
+  string publishAt = 31;
+  string url = 32;  
+  string startDateAdvertising=33;
+  string areaName=34;
+  repeated Category categories=35;
+  repeated Subject subjects=36;
+  int32 publisherId=37;
+}
+
+message PostsList {
+  repeated Posts data = 1;
+  int32 totalItems=2;
+  int32 perPage=3;
+  int32 totalPages=4;
+  int32 page=5;
+}
+
+message ApprovedOrDeclineRes {
+  bool success = 1;
+}

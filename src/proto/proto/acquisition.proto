@@ -1,0 +1,70 @@
+syntax = "proto3";
+package acquisitions;
+import "google/protobuf/any.proto";
+import "base.proto";
+import "company.proto";
+import "recentNew.proto";
+
+service AcquisitionService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryAcquisition) returns (GetListResponse) {}
+  rpc create(Acquisition) returns (GetOneResponse) {}
+  rpc update(Acquisition) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+
+message Acquisition {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 acquirerId = 7;
+  optional int32 acquireeId = 8;
+  optional int32 newAcquireeId = 9;
+  optional string announcedDate = 10;
+  optional string description = 11;
+  optional double value = 12;
+  optional int32 equity = 13;
+  optional Company acqAcquirer = 14;
+  optional Company acqAcquiree = 15;
+  optional Company newAcqAcquiree = 16;
+  optional string endDate = 17;
+  repeated File documents = 18;
+  repeated RecentNew recentNews = 19;
+}
+
+message QueryAcquisition {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional int32 acquirerId = 11;
+  optional int32 acquireeId = 12;
+  optional string announcedDate = 13;
+  optional string description = 14;
+  optional double value = 15;
+  optional int32 equity = 16;
+  optional string endDate = 17;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Acquisition data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Acquisition data = 2;
+}

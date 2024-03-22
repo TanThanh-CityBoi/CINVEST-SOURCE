@@ -1,0 +1,4 @@
+export enum LOG_ACTION_ENUM {
+  CREATED = 'CREATED',
+  UPDATED = 'UPDATED',
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+package companies;
+import "company.proto";
+import "profile.proto";
+message CompanyChiefMapping {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 companyId = 8;
+  optional int32 chiefId = 9;
+  optional Company company = 10;
+  optional Profile chief = 11;
+}

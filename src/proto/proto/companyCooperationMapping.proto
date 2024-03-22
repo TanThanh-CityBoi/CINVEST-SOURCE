@@ -1,0 +1,18 @@
+syntax = "proto3";
+package companies;
+import "company.proto";
+
+message CompanyCooperationMapping {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 companyId = 8;
+  optional int32 cooperationId = 9;
+  optional string description = 10;
+  optional string date = 11;
+  optional Company company = 12;
+  optional Company cooperation = 13;
+}

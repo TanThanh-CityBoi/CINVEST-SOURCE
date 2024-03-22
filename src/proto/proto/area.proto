@@ -1,0 +1,51 @@
+syntax = "proto3";
+package areas;
+import "base.proto";
+import "country.proto";
+
+service AreaService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryArea) returns (GetListResponse) {}
+  rpc create(Area) returns (GetOneResponse) {}
+  rpc update(Area) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Area {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 7;
+  repeated Country countries = 8;
+  optional string mainArea = 9;
+}
+message QueryArea {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string name = 11;
+  optional string mainArea = 12;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Area data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Area data = 2;
+}

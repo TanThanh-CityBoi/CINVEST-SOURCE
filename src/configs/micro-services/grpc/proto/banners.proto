@@ -1,0 +1,112 @@
+syntax = "proto3";
+package news;
+
+service BannersServiceGRPC {
+  rpc Create (CreateBannersRequest) returns (Banners);
+  rpc GetList (GetBannersRequest) returns (BannersList);
+  rpc GetById (BannerIdRequest) returns (Banners);
+  rpc Update (UpdateBannersRequest) returns (Banners);
+  rpc UpdateAds (Banners) returns (Banners);
+  rpc Delete (BannerIdRequest) returns (DeleteBannersResponse);
+  rpc ApprovedOrReject(MultipleUpdateRequest) returns (BaseRes);
+  rpc DeleteMultiple(IdsRequest) returns (BaseRes);
+}
+
+message BannerIdRequest{
+  int32 id=1;
+}
+
+message CreateBannersRequest {
+  string name = 2;
+  string type = 3;
+  string actionType = 4;
+  string redirectUrl = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string attachment = 8;
+  repeated int32 categoryIds = 9;
+  repeated int32 subjectIds = 10;
+  int32 countryId = 11;
+  int32 cityId = 12;
+  string countryName = 13;
+  string cityName = 14;
+  int32 advertisingDays = 15;
+  int32 advertisingId=16;
+  string state=17;
+  int32 typeId=18;
+  int32 actionTypeId=19;
+  string typeServices=28;
+  string startDateAdvertising=29;
+}
+
+message GetBannersRequest {
+  int32 page=1;
+  int32 limit=2;
+  string sortBy=3;
+  string sortOrder=4;
+  int32 countryId=5;
+  int32 cityId=6;
+  string name=7;
+  string type=8;
+  string actionType=9;
+  int32 advertisingId=10;
+  int32 typeId=11;
+  int32 actionTypeId=12;
+  string state=13;
+  string isPriorityAdvertising=14;
+  string typeServices=28;
+  repeated int32 categoryIds=29;
+  repeated int32 subjectIds=30;
+}
+
+message UpdateBannersRequest {
+ int32 id =1;
+ CreateBannersRequest dataUpdate=2;
+}
+
+message DeleteBannersResponse {
+  bool success = 1;
+}
+
+message Banners {
+  int32 id=1;
+  string name = 2;
+  string type = 3;
+  string actionType = 4;
+  string redirectUrl = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string attachment = 8;
+  repeated int32 categoryIds = 9;
+  repeated int32 subjectIds = 10;
+  int32 countryId = 11;
+  int32 cityId = 12;
+  string countryName = 13;
+  string cityName = 14;
+  Advertising advertisings=15;
+  int32 advertisingDays = 16;
+  string createdAt = 17;
+  string updatedAt = 18;
+  string createdBy = 19;
+  string updatedBy = 20;
+  string state = 21;
+  Category category=22;
+  ActionTypes actionTypes=23;
+  Types types=24;
+  int32 typeId=25;
+  int32 actionTypeId=26;
+  string publishAt = 27;
+  string typeServices=28;
+  string startDateAdvertising=29;
+  repeated Category categories=35;
+  repeated Subject subjects=36;
+  int32 advertisingId=37;
+}
+
+message BannersList {
+  repeated Banners data = 1;
+  int32 totalItems=2;
+  int32 perPage=3;
+  int32 totalPages=4;
+  int32 page=5;
+}
