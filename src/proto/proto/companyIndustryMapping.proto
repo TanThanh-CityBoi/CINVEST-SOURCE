@@ -1,0 +1,17 @@
+syntax = "proto3";
+package companies;
+import "company.proto";
+import "industry.proto";
+message CompanyIndustryMapping {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 companyId = 8;
+  optional int32 industryId = 9;
+  optional bool isMain = 10;
+  optional Company company = 11;
+  optional Industry industry = 12;
+}

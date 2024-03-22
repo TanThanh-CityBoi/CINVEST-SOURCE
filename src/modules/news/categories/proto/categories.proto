@@ -1,0 +1,47 @@
+syntax = "proto3";
+package news;
+
+service CategoriesServiceGrpc {
+  rpc Create (CreateCategoriesRequest) returns (Category);
+  rpc Find (GetCategoriesRequest) returns (ListCategories);
+  rpc FindById (CategoryIdRequest) returns (Category);
+  rpc Update (UpdateCategoriesRequest) returns (Category);
+  rpc Delete (CategoryIdRequest) returns (DeleteCategoryResponse);
+}
+
+message CreateCategoriesRequest {
+  string name = 2;
+}
+
+message GetCategoriesRequest {}
+
+message CategoryIdRequest {
+  int32 id=1;
+}
+
+message UpdateCategoriesRequest {
+  int32 id=1;
+  string name = 2;
+  string organization = 3;
+  string sourceType = 4;
+  string thumbnail = 5;
+  string content = 6;
+}
+
+message DeleteCategoryResponse {
+  bool success = 1;
+}
+
+message Category {
+  int32 id=1;
+  string name = 2;
+  string createdAt = 3;
+  string updatedAt = 4;
+  string createdBy = 5;
+  string updatedBy = 6;
+  string state = 7;
+}
+
+message ListCategories {
+  repeated Category data = 1;
+}

@@ -1,0 +1,56 @@
+syntax = "proto3";
+package countries;
+
+import "base.proto";
+import "city.proto";
+import "area.proto";
+
+
+service CountryService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryCountry) returns (GetListResponse) {}
+  rpc create(Country) returns (GetOneResponse) {}
+  rpc update(Country) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Country {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 7;
+  optional int32 countryId = 8;
+  repeated City cities = 9;
+  optional int32 areaId = 10;
+
+}
+message QueryCountry {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string name = 11;
+  optional int32 areaId = 12;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Country data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Country data = 2;
+}

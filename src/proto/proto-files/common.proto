@@ -1,0 +1,64 @@
+syntax = "proto3";
+package news;
+
+message IdRequest {
+    int32 id=1;
+}
+
+message MultipleUpdateRequest {
+  repeated int32 ids=1;
+  string state=2;
+}
+
+message IdsRequest {
+  repeated int32 ids=1;
+}
+
+message Hashtags{
+    string name = 2;
+}
+
+message Profile {
+    optional int32 id = 1;
+    optional string createdAt = 2;
+    optional string updatedAt = 3;
+    optional string createdBy = 4;
+    optional string updatedBy = 5;
+    optional string state = 6;
+    optional string firstName = 7;
+    optional string lastName = 8;
+    optional string gender = 9;
+    optional string type = 10;
+    optional string dob = 11;
+    optional int32 cityId = 12;
+    optional string description = 13;
+    optional string investDescription = 14;
+    optional int32 userId = 15;
+    optional User user = 16;
+}
+
+message User {
+    optional int32 id = 1;
+    optional string createdAt = 2;
+    optional string updatedAt = 3;
+    optional string createdBy = 4;
+    optional string updatedBy = 5;
+    optional string state = 6;
+    optional string email = 7;
+    optional string password = 8;
+    optional string phone = 9;
+    optional string role = 10;
+    optional string profileType = 11;
+    optional string phonePrefix = 12;
+    optional string thumb = 13;
+    optional string background = 14;
+    optional int32 profileId = 15;
+    optional int32 companyId = 16;
+    optional Profile profile = 17;
+    optional string sub = 19;
+}
+
+message BaseRes{
+  bool success = 1;
+  string message = 2;
+}

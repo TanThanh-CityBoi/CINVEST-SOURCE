@@ -1,0 +1,4 @@
+export enum POST_TYPE_ENUM {
+  SYSTEM = 'SYSTEM',
+  EXTERNAL = 'EXTERNAL',
+}

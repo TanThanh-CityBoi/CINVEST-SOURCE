@@ -1,0 +1,12 @@
+syntax = "proto3";
+package userMapping;
+
+message UserMapping {
+    optional int32 id = 1;
+    optional string createdAt = 2;
+    optional string updatedAt = 3;
+    optional string createdBy = 4;
+    optional string updatedBy = 5;
+    optional string state = 6;
+    optional string sub=7;
+  }

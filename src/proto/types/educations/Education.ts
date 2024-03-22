@@ -1,0 +1,94 @@
+// Original file: src/proto/proto/education.proto
+
+import type { File as _files_File, File__Output as _files_File__Output } from '../files/File';
+import type { Profile as _profiles_Profile, Profile__Output as _profiles_Profile__Output } from '../profiles/Profile';
+import type { City as _cities_City, City__Output as _cities_City__Output } from '../cities/City';
+import type { School as _schools_School, School__Output as _schools_School__Output } from '../schools/School';
+
+export interface Education {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'degreeType'?: (string);
+  'major'?: (string);
+  'gpa'?: (number | string);
+  'description'?: (string);
+  'cityId'?: (number);
+  'profileId'?: (number);
+  'documents'?: (_files_File)[];
+  'profile'?: (_profiles_Profile | null);
+  'city'?: (_cities_City | null);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  'schoolId'?: (number);
+  'school'?: (_schools_School | null);
+  '_id'?: "id";
+  '_createdAt'?: "createdAt";
+  '_updatedAt'?: "updatedAt";
+  '_createdBy'?: "createdBy";
+  '_updatedBy'?: "updatedBy";
+  '_state'?: "state";
+  '_startDate'?: "startDate";
+  '_endDate'?: "endDate";
+  '_degreeType'?: "degreeType";
+  '_major'?: "major";
+  '_gpa'?: "gpa";
+  '_description'?: "description";
+  '_cityId'?: "cityId";
+  '_profileId'?: "profileId";
+  '_profile'?: "profile";
+  '_city'?: "city";
+  '_startYear'?: "startYear";
+  '_endYear'?: "endYear";
+  '_schoolId'?: "schoolId";
+  '_school'?: "school";
+}
+
+export interface Education__Output {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'degreeType'?: (string);
+  'major'?: (string);
+  'gpa'?: (number);
+  'description'?: (string);
+  'cityId'?: (number);
+  'profileId'?: (number);
+  'documents': (_files_File__Output)[];
+  'profile'?: (_profiles_Profile__Output | null);
+  'city'?: (_cities_City__Output | null);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  'schoolId'?: (number);
+  'school'?: (_schools_School__Output | null);
+  '_id': "id";
+  '_createdAt': "createdAt";
+  '_updatedAt': "updatedAt";
+  '_createdBy': "createdBy";
+  '_updatedBy': "updatedBy";
+  '_state': "state";
+  '_startDate': "startDate";
+  '_endDate': "endDate";
+  '_degreeType': "degreeType";
+  '_major': "major";
+  '_gpa': "gpa";
+  '_description': "description";
+  '_cityId': "cityId";
+  '_profileId': "profileId";
+  '_profile': "profile";
+  '_city': "city";
+  '_startYear': "startYear";
+  '_endYear': "endYear";
+  '_schoolId': "schoolId";
+  '_school': "school";
+}

@@ -1,0 +1,4 @@
+export enum BANNER_TYPE_SERVICES_ENUM {
+  STORES = 'STORES',
+  NEWS = 'NEWS',
+}

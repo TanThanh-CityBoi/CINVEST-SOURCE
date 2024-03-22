@@ -1,0 +1,21 @@
+syntax = "proto3";
+package statistic;
+
+service StatisticService {
+  rpc getList(GetRequest) returns (GetResponse) {}
+}
+
+message GetRequest {
+}
+
+message Statistic {
+  int32 totalCampaigns = 1;
+  int32 totalInvestors = 2;
+  int32 totalEnterprises = 3;
+  int32 totalPartners = 4;
+}
+
+message GetResponse {
+  string message = 1;
+  optional Statistic data = 2;
+}

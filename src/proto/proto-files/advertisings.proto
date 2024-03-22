@@ -1,0 +1,54 @@
+syntax = "proto3";
+package news;
+
+service AdvertisingServiceGrpc {
+  rpc Create (CreateAdvertisingRequest) returns (Advertising);
+  rpc GetList (GetAdvertisingRequest) returns (ListAdvertisings);
+  rpc GetById (AdvertisingIdRequest) returns (Advertising);
+  rpc Update (UpdateAdvertisingRequest) returns (Advertising);
+  rpc Delete (AdvertisingIdRequest) returns (DeleteAdvertisingResponse);
+}
+
+message CreateAdvertisingRequest {
+  string name = 2;
+  string type = 8;
+}
+
+message GetAdvertisingRequest {
+  string name = 2;
+  string type = 8;
+}
+
+message AdvertisingIdRequest {
+  int32 id=1;
+}
+
+message UpdateAdvertisingRequest {
+  int32 id=1;
+  string name = 2;
+  string createdAt = 3;
+  string updatedAt = 4;
+  string createdBy = 5;
+  string updatedBy = 6;
+  string state = 7;
+  string type = 8;
+}
+
+message DeleteAdvertisingResponse {
+  bool success = 1;
+}
+
+message Advertising {
+  int32 id=1;
+  string name = 2;
+  string createdAt = 3;
+  string updatedAt = 4;
+  string createdBy = 5;
+  string updatedBy = 6;
+  string state = 7;
+  string type = 8;
+}
+
+message ListAdvertisings {
+  repeated Advertising data = 1;
+}

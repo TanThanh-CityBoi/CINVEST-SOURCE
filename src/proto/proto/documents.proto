@@ -1,0 +1,60 @@
+syntax = "proto3";
+package documents;
+import "base.proto";
+import "campaign.proto";
+
+service DocumentsService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryDocument) returns (GetListResponse) {}
+  rpc create(Document) returns (GetOneResponse) {}
+  rpc update(Document) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Document {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string url = 7;
+  optional int32 campaignId = 8;
+  optional Campaign campaign = 9;
+  optional string title = 10;
+  optional string description = 11;
+  optional string category = 12;
+  optional string privacy = 13;
+  optional int64 size=14;
+}
+message QueryDocument {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string url = 11;
+  optional int32 campaignId = 12;
+  optional string title = 13;
+  optional string description = 14;
+  optional string category = 15;
+  optional string privacy = 16;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Document data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Document data = 2;
+}

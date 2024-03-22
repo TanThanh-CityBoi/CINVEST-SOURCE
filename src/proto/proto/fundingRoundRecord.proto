@@ -1,0 +1,18 @@
+syntax = "proto3";
+package users;
+import "base.proto";
+import "user.proto";
+import "fundingRound.proto";
+
+message FundingRoundRecord {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 userId = 7;
+  optional int32 fundingRoundId = 8;
+  optional User user = 9;
+  optional FundingRound fundingRound = 10;
+}

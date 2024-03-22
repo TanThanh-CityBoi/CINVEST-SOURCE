@@ -1,0 +1,66 @@
+syntax = "proto3";
+package files;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+
+service FileService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryFile) returns (GetListResponse) {}
+  rpc create(File) returns (GetOneResponse) {}
+  rpc update(File) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message File {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string url = 7;
+  optional string key = 8;
+  optional int32 fundingRoundId = 9;
+  optional int32 userExpId = 10;
+  optional int32 educationId = 11;
+  optional int32 albumId = 12;
+  optional int32 serviceId = 13;
+  optional int32 productId = 14;
+  optional int32 acquisitionId = 15;
+}
+
+message QueryFile {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string url = 11;
+  optional string key = 12;
+  optional int32 fundingRoundId = 13;
+  optional int32 userExpId = 14;
+  optional int32 educationId = 15;
+  optional int32 albumId = 16;
+  optional int32 serviceId = 17;
+  optional int32 productId = 18;
+  optional int32 acquisitionId = 19;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated File data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional File data = 2;
+}

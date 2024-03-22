@@ -1,0 +1,46 @@
+syntax = "proto3";
+package news;
+
+service ActionTypesServiceGrpc {
+  rpc Create (ActionTypes) returns (ActionTypes);
+  rpc GetList (GetActionTypesRequest) returns (ListActionTypes);
+  rpc GetById (IdRequest) returns (ActionTypes);
+  rpc Update (ActionTypes) returns (ActionTypes);
+  rpc Delete (IdRequest) returns (DeleteActionTypesResponse);
+}
+
+message ActionTypes {
+   int32 id = 1;
+   string createdAt = 2;
+   string updatedAt = 3;
+   int32 createdBy = 4;
+   int32 updatedBy = 5;
+   string state = 6;
+  string name = 7;
+}
+
+message GetActionTypesRequest {
+   int32 id = 1;
+   string createdAt = 2;
+   string updatedAt = 3;
+   int32 createdBy = 4;
+   int32 updatedBy = 5;
+   string state = 6;
+   int32 page = 7;
+   int32 limit = 8;
+   string sortBy = 9;
+   string sortOrder = 10;
+   string name = 11;
+}
+
+message DeleteActionTypesResponse {
+  bool success = 1;
+}
+
+message ListActionTypes {
+  repeated ActionTypes data = 1;
+   int32 totalItems = 2;
+   int32 perPage = 3;
+   int32 totalPages = 4;
+   int32 page = 5;
+}

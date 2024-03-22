@@ -1,0 +1,79 @@
+syntax = "proto3";
+package experiences;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+import "jobTitle.proto";
+import "city.proto";
+
+service ExperienceService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryExperience) returns (GetListResponse) {}
+  rpc create(Experience) returns (GetOneResponse) {}
+  rpc update(Experience) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Experience {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 orgId = 7;
+  optional string startDate = 8;
+  optional string endDate = 9;
+  optional int32 cityId = 10;
+  optional string employmentType = 11;
+  optional int32 jobTitleId = 12;
+  optional string description = 13;
+  optional int32 profileId = 14;
+  repeated File documents = 15;
+  optional Profile profile = 16;
+  optional City city = 17;
+  optional JobTitle jobTitle = 18;
+  optional Company organization = 19;
+  optional string startYear = 20;
+  optional string endYear = 21;
+}
+message QueryExperience {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional int32 orgId = 11;
+  optional string startDate = 12;
+  optional string endDate = 13;
+  optional int32 cityId = 14;
+  optional string employmentType = 15;
+  optional int32 jobTitleId = 16;
+  optional string description = 17;
+  optional int32 profileId = 18;
+  repeated File documents = 19;
+  optional Profile profile = 20;
+  optional City city = 21;
+  optional JobTitle jobTitle = 22;
+  optional Company organization = 23;
+  optional string startYear = 24;
+  optional string endYear = 25;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Experience data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Experience data = 2;
+}
