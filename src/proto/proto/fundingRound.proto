@@ -1,0 +1,76 @@
+syntax = "proto3";
+package fundingRounds;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+import "file.proto";
+import "fundingInvestorMapping.proto";
+import "recentNew.proto";
+
+service FundingRoundService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryFundingRound) returns (GetListResponse) {}
+  rpc create(FundingRound) returns (GetOneResponse) {}
+  rpc update(FundingRound) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+  rpc deleteInvestor(DeleteInvestorRequest) returns (DeleteResponse) {}
+}
+
+message FundingRound {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 investeeId = 7;
+  optional string announcedDate = 8;
+  optional string round = 9;
+  optional string type = 10;
+  optional double preMoney = 11;
+  optional double moneyRaised = 12;
+  optional string description = 13;
+  optional Company investee = 14;
+  repeated File documents = 15;
+  repeated FundingInvestorMapping investors = 16;
+  repeated RecentNew recentNews = 17;
+}
+
+message QueryFundingRound {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional int32 investeeId = 11;
+  optional string announcedDate = 12;
+  optional string round = 13;
+  optional string type = 14;
+  optional double preMoney = 15;
+  optional double moneyRaised = 16;
+  optional string description = 17;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated FundingRound data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional FundingRound data = 2;
+}
+
+message DeleteInvestorRequest {
+  int32 id = 1;
+  int32 investorId = 2;
+}

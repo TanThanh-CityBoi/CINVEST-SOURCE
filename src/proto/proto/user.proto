@@ -1,0 +1,86 @@
+syntax = "proto3";
+package users;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+import "connection.proto";
+import "individualRecord.proto";
+import "fundingRoundRecord.proto";
+import "organizationRecord.proto";
+
+
+service UserService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getBySub(Sub) returns (GetOneResponse) {}
+  rpc getList(QueryUser) returns (GetListResponse) {}
+  rpc create(User) returns (GetOneResponse) {}
+  rpc update(User) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}  
+  rpc deleteBySub(Sub) returns (DeleteResponse) {}
+}
+message User {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string email = 7;
+  optional string password = 8;
+  optional string phone = 9;
+  optional string role = 10;
+  optional string profileType = 11;
+  optional string phonePrefix = 12;
+  optional string thumb = 13;
+  optional string background = 14;
+  optional int32 profileId = 15;
+  optional int32 companyId = 16;
+  optional Profile profile = 17;
+  optional Company company = 18;
+  optional string sub = 19;
+  repeated Connection followingList = 20;
+  repeated Connection followerList = 21;
+  repeated IndividualRecord individualRecords = 22;
+  repeated FundingRoundRecord fundingRoundRecords = 23;
+  repeated OrganizationRecord organizationRecords = 24;
+}
+
+message QueryUser {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string email = 11;
+  optional string phone = 12;
+  optional string role = 13;
+  optional string profileType = 14;
+  optional int32 profileId = 15;
+  optional int32 companyId = 16;
+  optional string sub = 17;
+  repeated int32 ids = 18;
+  repeated string subs =19;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated User data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional User data = 2;
+}
+
+message Sub {
+  string sub = 1;
+}

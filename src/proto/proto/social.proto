@@ -1,0 +1,59 @@
+syntax = "proto3";
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+package socials;
+
+service SocialService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QuerySocial) returns (GetListResponse) {}
+  rpc create(Social) returns (GetOneResponse) {}
+  rpc update(Social) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Social {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string url = 7;
+  optional string description = 8;
+  optional int32 profileId = 9;
+  optional int32 companyId = 10;
+  optional Profile profile = 11;
+  optional Company company = 12;
+}
+message QuerySocial {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string url = 11;
+  optional string description = 12;
+  optional int32 profileId = 13;
+  optional int32 companyId = 14;
+  optional Profile profile = 15;
+  optional Company company = 16;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Service data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Service data = 2;
+}

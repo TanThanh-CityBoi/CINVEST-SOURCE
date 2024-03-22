@@ -1,0 +1,57 @@
+syntax = "proto3";
+package exits;
+import "base.proto";
+import "company.proto";
+import "profile.proto";
+
+service ExitService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryExit) returns (GetListResponse) {}
+  rpc create(Exit) returns (GetOneResponse) {}
+  rpc update(Exit) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Exit {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string exitDate = 7;
+  optional int32 companyId = 8;
+  optional int32 profileId = 9;
+  optional Company company = 10;
+  optional Profile profile = 11;
+}
+message QueryExit {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string exitDate = 11;
+  optional int32 companyId = 12;
+  optional int32 profileId = 13;
+  optional Company company = 14;
+  optional Profile profile = 15;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Exit data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Exit data = 2;
+}

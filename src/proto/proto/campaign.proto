@@ -1,0 +1,103 @@
+syntax = "proto3";
+package campaigns;
+import "base.proto";
+import "company.proto";
+import "recentNew.proto";
+import "documents.proto";
+import "faq.proto";
+import "user-mapping.proto";
+
+service CampaignService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryCampaign) returns (GetListResponse) {}
+  rpc create(Campaign) returns (GetOneResponse) {}
+  rpc update(Campaign) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+  rpc count(QueryCampaign) returns (CountResponse) {}
+}
+
+message Campaign {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string title = 7;
+  optional string description = 8;
+  optional string launchDate = 9;
+  optional string endDate = 10;
+  optional int32 minEquity = 11;
+  optional double minAmount = 12;
+  optional double valuationCap = 13;
+  optional int32 discount = 14;
+  optional double fundingGoal = 15;
+  optional string round = 16;
+  optional string pitchTitle = 17;
+  optional string pitchContent = 18;
+  optional int32 companyId = 19;
+  repeated RecentNew recentNews = 20;
+  optional Company company = 21;
+  optional string type = 22;
+  optional string category = 23;
+  repeated Document documents = 24;
+  repeated FAQ faq = 25;
+  optional string code=26;
+  optional string companyPicture=27;
+  optional int32 totalInvestor=28;
+  optional string bannerPicture=29;
+  optional int32 countryId=30;
+  optional string countryName=31;
+  optional int32 cityId=32;
+  optional string cityName=33;  
+  repeated UserMapping bookmarks=34;
+  repeated HashTags hashtags=35;
+}
+
+message QueryCampaign {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string title = 11;
+  optional string description = 12;
+  optional string launchDate = 13;
+  optional string endDate = 14;
+  optional int32 minEquity = 15;
+  optional double minAmount = 16;
+  optional double valuationCap = 17;
+  optional int32 discount = 18;
+  optional double fundingGoal = 19;
+  optional string round = 20;
+  optional string pitchTitle = 21;
+  optional string pitchContent = 22;
+  optional int32 companyId = 23;
+  optional int32 cityId = 24;
+  optional string type = 25;
+  optional string category = 26;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Campaign data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Campaign data = 2;
+}
+
+message HashTags {
+  optional int32 id = 1;
+  optional string name = 2;
+}

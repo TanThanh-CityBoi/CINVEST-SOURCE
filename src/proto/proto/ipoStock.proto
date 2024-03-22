@@ -1,0 +1,61 @@
+syntax = "proto3";
+package ipoStocks;
+import "base.proto";
+import "company.proto";
+
+service IpoStockService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryIpoStock) returns (GetListResponse) {}
+  rpc create(IpoStock) returns (GetOneResponse) {}
+  rpc update(IpoStock) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message IpoStock {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string description = 7;
+  optional string stockSymbol = 8;
+  optional double ipoValue = 9;
+  optional double ipoSharePrice = 10;
+  optional string ipoDate = 11;
+  optional string chartSource = 12;
+  optional int32 companyId = 13;
+  optional Company company = 14;
+}
+message QueryIpoStock {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string description = 11;
+  optional string stockSymbol = 12;
+  optional double ipoValue = 13;
+  optional double ipoSharePrice = 14;
+  optional string ipoDate = 15;
+  optional string chartSource = 16;
+  optional int32 companyId = 17;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated IpoStock data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional IpoStock data = 2;
+}

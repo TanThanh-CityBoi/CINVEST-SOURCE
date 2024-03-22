@@ -1,0 +1,16 @@
+syntax = "proto3";
+package profiles;
+import "country.proto";
+import "profile.proto";
+message ProfileInvestLocationMapping {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 profileId = 8;
+  optional int32 countryId = 9;
+  optional Profile profile = 10;
+  optional Country country = 11;
+}

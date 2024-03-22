@@ -1,0 +1,51 @@
+syntax = "proto3";
+package news;
+
+service HashTagServiceGrpc {
+  rpc Create (HashTag) returns (HashTag);
+  rpc GetList (GetHashTagRequest) returns (ListHashTag);
+  rpc GetById (IdRequest) returns (HashTag);
+  rpc Update (HashTag) returns (HashTag);
+  rpc Delete (IdRequest) returns (DeleteHashTagResponse);
+}
+
+message IdRequest {
+  int32 id=1;
+}
+
+message HashTag {
+  int32 id = 1;
+  string createdAt = 2;
+  string updatedAt = 3;
+  int32 createdBy = 4;
+  int32 updatedBy = 5;
+  string state = 6;
+  string name = 7;
+}
+
+message GetHashTagRequest {
+  int32 id = 1;
+  string createdAt = 2;
+  string updatedAt = 3;
+  int32 createdBy = 4;
+  int32 updatedBy = 5;
+  string state = 6;
+  int32 page = 7;
+  int32 limit = 8;
+  string sortBy = 9;
+  string sortOrder = 10;
+  string name = 11;
+  repeated int32 ids=12;
+}
+
+message DeleteHashTagResponse {
+  bool success = 1;
+}
+
+message ListHashTag {
+  repeated HashTag data = 1;
+  int32 totalItems = 2;
+  int32 perPage = 3;
+  int32 totalPages = 4;
+  int32 page = 5;
+}

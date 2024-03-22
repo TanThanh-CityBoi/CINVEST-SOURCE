@@ -1,0 +1,48 @@
+syntax = "proto3";
+package skills;
+import "base.proto";
+service SkillService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QuerySkill) returns (GetListResponse) {}
+  rpc create(Skill) returns (GetOneResponse) {}
+  rpc update(Skill) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Skill {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 7;
+  repeated google.protobuf.Any profiles = 8; 
+}
+message QuerySkill {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string name = 11;
+}
+
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Skill data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Skill data = 2;
+}

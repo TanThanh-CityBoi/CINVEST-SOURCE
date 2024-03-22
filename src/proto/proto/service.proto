@@ -1,0 +1,64 @@
+syntax = "proto3";
+package services;
+import "base.proto";
+import "company.proto";
+import "file.proto";
+import "industry.proto";
+
+service ServiceService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryService) returns (GetListResponse) {}
+  rpc create(Service) returns (GetOneResponse) {}
+  rpc update(Service) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Service {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string name = 7;
+  optional string description = 8;
+  optional string logo = 9;
+  optional int32 companyId = 10;
+  optional Industry industry = 11;
+  optional Company company = 12;
+  repeated File files = 13;
+  optional string thumb = 14;
+  optional int32 industryId = 15;
+
+}
+message QueryService {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string name = 11;
+  optional string description = 12;
+  optional string logo = 13;
+  optional int32 companyId = 14;
+  optional string thumb = 15;
+  optional int32 industryId = 16;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Service data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Service data = 2;
+}

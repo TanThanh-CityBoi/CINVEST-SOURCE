@@ -1,0 +1,72 @@
+syntax = "proto3";
+package faq;
+
+import "base.proto";
+import "campaign.proto";
+
+service FAQsService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryFAQ) returns (GetListResponse) {}
+  rpc create(FAQ) returns (GetOneResponse) {}
+  rpc update(FAQ) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+
+message QAndA {
+    optional int32 id = 1;
+    optional string createdAt = 2;
+    optional string updatedAt = 3;
+    optional string createdBy = 4;
+    optional string updatedBy = 5;
+    optional string state = 6;
+    optional string question = 7;
+    optional string answer = 8;
+    optional int32 faqId = 9;
+    optional FAQ faq = 10;
+  }
+
+message FAQ {
+    optional int32 id = 1;
+    optional string createdAt = 2;
+    optional string updatedAt = 3;
+    optional string createdBy = 4;
+    optional string updatedBy = 5;
+    optional string state = 6;
+    optional int32 campaignId = 7;
+    optional Campaign campaign = 8;
+    optional string category = 9;
+    repeated QAndA qAndA = 10;
+}
+
+message QueryFAQ {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string url = 11;
+  optional int32 campaignId = 12;
+  optional string title = 13;
+  optional string description = 14;
+  optional string category = 15;
+  optional string privacy = 16;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated FAQ data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional FAQ data = 2;
+}

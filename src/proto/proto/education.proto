@@ -1,0 +1,76 @@
+syntax = "proto3";
+package educations;
+import "base.proto";
+import "profile.proto";
+import "file.proto";
+import "city.proto";
+import "school.proto";
+
+service EducationService {
+  rpc getById(Id) returns (GetOneResponse) {}
+  rpc getList(QueryEducation) returns (GetListResponse) {}
+  rpc create(Education) returns (GetOneResponse) {}
+  rpc update(Education) returns (GetOneResponse) {}
+  rpc delete(Id) returns (DeleteResponse) {}
+}
+message Education {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional string startDate = 8;
+  optional string endDate = 9;
+  optional string degreeType = 10;
+  optional string major = 11;
+  optional double gpa = 12;
+  optional string description = 13;
+  optional int32 cityId = 14;
+  optional int32 profileId = 15;
+  repeated File documents = 16;
+  optional Profile profile = 17;
+  optional City city = 18;
+  optional string startYear = 19;
+  optional string endYear = 20;
+  optional int32 schoolId = 21;
+  optional School school = 22;
+
+}
+message QueryEducation {
+  optional int32 id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  optional string createdBy = 4;
+  optional string updatedBy = 5;
+  optional string state = 6;
+  optional int32 page = 7;
+  optional int32 limit = 8;
+  optional string sortBy = 9;
+  optional string sortOrder = 10;
+  optional string startDate = 12;
+  optional string endDate = 13;
+  optional string degreeType = 14;
+  optional string major = 15;
+  optional double gpa = 16;
+  optional string description = 17;
+  optional int32 cityId = 18;
+  optional int32 profileId = 19;
+  optional string startYear = 20;
+  optional string endYear = 21;
+  optional int32 schoolId = 22;
+}
+
+message GetListResponse {
+  string message = 1;
+  optional int32 totalItems = 2;
+  optional int32 perPage = 3;
+  optional int32 totalPages = 4;
+  optional int32 page = 5;
+  repeated Education data = 6;
+}
+
+message GetOneResponse {
+  string message = 1;
+  optional Education data = 2;
+}

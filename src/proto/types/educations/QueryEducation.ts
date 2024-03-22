@@ -1,0 +1,92 @@
+// Original file: src/proto/proto/education.proto
+
+
+export interface QueryEducation {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'page'?: (number);
+  'limit'?: (number);
+  'sortBy'?: (string);
+  'sortOrder'?: (string);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'degreeType'?: (string);
+  'major'?: (string);
+  'gpa'?: (number | string);
+  'description'?: (string);
+  'cityId'?: (number);
+  'profileId'?: (number);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  'schoolId'?: (number);
+  '_id'?: "id";
+  '_createdAt'?: "createdAt";
+  '_updatedAt'?: "updatedAt";
+  '_createdBy'?: "createdBy";
+  '_updatedBy'?: "updatedBy";
+  '_state'?: "state";
+  '_page'?: "page";
+  '_limit'?: "limit";
+  '_sortBy'?: "sortBy";
+  '_sortOrder'?: "sortOrder";
+  '_startDate'?: "startDate";
+  '_endDate'?: "endDate";
+  '_degreeType'?: "degreeType";
+  '_major'?: "major";
+  '_gpa'?: "gpa";
+  '_description'?: "description";
+  '_cityId'?: "cityId";
+  '_profileId'?: "profileId";
+  '_startYear'?: "startYear";
+  '_endYear'?: "endYear";
+  '_schoolId'?: "schoolId";
+}
+
+export interface QueryEducation__Output {
+  'id'?: (number);
+  'createdAt'?: (string);
+  'updatedAt'?: (string);
+  'createdBy'?: (string);
+  'updatedBy'?: (string);
+  'state'?: (string);
+  'page'?: (number);
+  'limit'?: (number);
+  'sortBy'?: (string);
+  'sortOrder'?: (string);
+  'startDate'?: (string);
+  'endDate'?: (string);
+  'degreeType'?: (string);
+  'major'?: (string);
+  'gpa'?: (number);
+  'description'?: (string);
+  'cityId'?: (number);
+  'profileId'?: (number);
+  'startYear'?: (string);
+  'endYear'?: (string);
+  'schoolId'?: (number);
+  '_id': "id";
+  '_createdAt': "createdAt";
+  '_updatedAt': "updatedAt";
+  '_createdBy': "createdBy";
+  '_updatedBy': "updatedBy";
+  '_state': "state";
+  '_page': "page";
+  '_limit': "limit";
+  '_sortBy': "sortBy";
+  '_sortOrder': "sortOrder";
+  '_startDate': "startDate";
+  '_endDate': "endDate";
+  '_degreeType': "degreeType";
+  '_major': "major";
+  '_gpa': "gpa";
+  '_description': "description";
+  '_cityId': "cityId";
+  '_profileId': "profileId";
+  '_startYear': "startYear";
+  '_endYear': "endYear";
+  '_schoolId': "schoolId";
+}
