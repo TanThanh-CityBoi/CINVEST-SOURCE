@@ -1,0 +1,11 @@
+syntax = "proto3";
+package bases;
+import "google/protobuf/any.proto";
+
+
+message Id {
+  int32 id = 1;
+}
+message DeleteResponse {
+  string message = 1;
+}
