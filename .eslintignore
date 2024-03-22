@@ -1,0 +1,5 @@
+build/**
+log/**
+dist/**
+
+src/proto/**

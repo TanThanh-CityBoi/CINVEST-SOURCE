@@ -1,0 +1,15 @@
+node_modules
+build
+npm-debug.log
+.DS_Store
+.babelrc
+dist
+tsconfig.tsbuildinfo
+log/*
+yarn-error.log
+build
+/database/
+database
+src/ormconfig.json
+src/tsconfig.json
+src/public/storage
